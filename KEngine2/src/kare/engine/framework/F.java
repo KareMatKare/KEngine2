@@ -3,10 +3,11 @@ package kare.engine.framework;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
+
+import kare.drawer.drawer.Drawer;
 
 public class F implements Runnable{
 	Frame frame;
@@ -70,6 +71,7 @@ public class F implements Runnable{
 		// TODO Auto-generated method stub
 		try {
 			draw();
+			update();
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -82,8 +84,15 @@ public class F implements Runnable{
 		Graphics g=bufferedImage.getGraphics();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, w, h);
+		g.setColor(Color.BLACK);
+		Drawer.getDrawer().setGraphics(g);
+
 		Graphics gf=frame.getGraphics();
 		gf.drawImage(bufferedImage, 0, 0, w,h,null);
+	}
+	
+	private void update(){
+		
 	}
 
 }
